@@ -4,7 +4,7 @@ $(document).ready(function () {
   var timeblockContainer = document.getElementById("time-block");
   var fetchButton = document.getElementById("saveBtn");
   var currentDay = document.getElementById("currentDay");
-  var myInputText = document.getElementById("myText");
+  var myInputText = document.getElementsByClassName("myText");
   var hourInteger = document.getElementsByClassName("hour");
 
   // moment.js
@@ -35,11 +35,11 @@ $(document).ready(function () {
   checkTime();
 
   //when savebtn is pressed save data to local storage
-  //   $(".saveBtn").on("click", function () {
-  //     console.log("save button is clicked");
-  //     var grabText = myInputText.textContent($("#myText"));
-
-  //     console.log(grabText);
-  //   });
+  $(".saveBtn").on("click", function () {
+    console.log("save button is clicked");
+    // var grabText = myInputText.textContent($("#myText"));
+    var grabText = $(this).siblings(".description").val();
+    console.log(grabText);
+    localStorage.setItem("calendarItem", grabText);
+  });
 });
-//dynamic html = colors and if items are saved, items are saved in hour time slot
