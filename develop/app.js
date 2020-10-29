@@ -12,19 +12,27 @@ $(document).ready(function () {
   console.log(now);
   currentDay.append(now);
 
+  var nowCompare = moment().hour();
+
   function checkTime() {
     $(".time-block").each(function () {
       var parseHourInt = parseInt($(this).attr("id"));
       console.log(parseHourInt);
+
+      // if the time is equal to the calendar time, an attribute will be added to div
+      if (parseHourInt === nowCompare) {
+        console.log("This is the time");
+
+        $(this).children(".description").addClass("present");
+      } else if (parseHourInt < nowCompare) {
+        $(this).children(".description").addClass("present");
+      } else {
+        $(this).children(".description").addClass("future");
+      }
     });
   }
 
   checkTime();
-
-  // if the time is equal to the calendar time, an attribute will be added to div
-  //   if (now === parseHourInt) {
-  //     console.log("This is the time");
-  //   }
 
   //when savebtn is pressed save data to local storage
   //   $(".saveBtn").on("click", function () {
