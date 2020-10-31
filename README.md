@@ -1,2 +1,2 @@
-<p>Welcome to my Workday Scheduler</p>
+<p>Welcome to my Workday Scheduler! This calendar app uses moment.js to display the current time and date. The user is able to input different calender events into time blocks displayed, which will remain in the calendar, even once the page reloads. It accomplishes this by saving the data to local storage. The html is also dynamically updated as javascript code compares the hour of the schedule to the current hour. Past hours are dynamically updated to gray, the current time remains red, and future time blocks are updated to green.</p>
 <img src="workday.png" alt="workdayScheduler">
