@@ -4,8 +4,8 @@ $(document).ready(function () {
   var timeblockContainer = document.getElementById("time-block");
   var fetchButton = document.getElementById("saveBtn");
   var currentDay = document.getElementById("currentDay");
-  var myInputText = document.getElementsByClassName("myText");
   var hourInteger = document.getElementsByClassName("hour");
+  var appendDescription = document.getElementsByClassName("description");
 
   // moment.js
   var now = moment().format("LLLL");
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         $(this).children(".description").addClass("present");
       } else if (parseHourInt < nowCompare) {
-        $(this).children(".description").addClass("present");
+        $(this).children(".description").addClass("past");
       } else {
         $(this).children(".description").addClass("future");
       }
@@ -37,9 +37,13 @@ $(document).ready(function () {
   //when savebtn is pressed save data to local storage
   $(".saveBtn").on("click", function () {
     console.log("save button is clicked");
-    // var grabText = myInputText.textContent($("#myText"));
+
     var grabText = $(this).siblings(".description").val();
     console.log(grabText);
     localStorage.setItem("calendarItem", grabText);
+
+    // get most recent submission
+    var calenderItemSaved = localStorage.getItem("calendarItem");
+    appendDescription.textContent = calenderItemSaved.calendarItem;
   });
 });
