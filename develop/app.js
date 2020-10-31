@@ -37,13 +37,26 @@ $(document).ready(function () {
   //when savebtn is pressed save data to local storage
   $(".saveBtn").on("click", function () {
     console.log("save button is clicked");
+    var value = $(this).data("value");
+    console.log(value);
 
     var grabText = $(this).siblings(".description").val();
     console.log(grabText);
-    localStorage.setItem("calendarItem", grabText);
-
-    // get most recent submission
-    var calenderItemSaved = localStorage.getItem("calendarItem");
-    appendDescription.textContent = calenderItemSaved.calendarItem;
+    localStorage.setItem("calendarItem" + value, grabText);
   });
+
+  // get most recent submission
+  function initializeLocalStorage() {
+    for (let id = 9; id <= 18; id++) {
+      var item = localStorage.getItem("calendarItem" + id);
+      if (item) {
+        console.log(item);
+        $("#" + id)
+          .find(".description")
+          .val(item);
+      }
+    }
+  }
+
+  initializeLocalStorage();
 });
